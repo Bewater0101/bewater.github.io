@@ -8,8 +8,6 @@ header-img: "img/post-bg-js-module.jpg"
 tags:
     - 科技
     - 生活
-	- Android
-	- Java
 ---
 
 # Bewater
