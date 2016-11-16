@@ -1,14 +1,14 @@
 # Site settings
 title: Bewater Blog
-SEOTitle: 你的博客 | Bewater Blog
+SEOTitle: Bewater的博客 | Bewater Blog
 header-img: img/home-bg.jpg
-email: huxpro@gmail.com
-description: ""
-keyword: ""
-url: "http://www.beawaters.com"              # Bewater host, for absolute URL
+email: ifreesky1988@gmail.com
+description: "Bewater Blog"
+keyword: "Bewater的博客 | Bewater Blog"
+url: "http://beawaters.com"              # Bewater host, for absolute URL
 baseurl: ""         # for example, '/blog' if Bewater blog hosted on 'host/blog'
 
-
+#beawaters.com/img/favicon.ico
 
 # SNS settings
 RSS: false
