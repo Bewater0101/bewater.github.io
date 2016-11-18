@@ -68,7 +68,7 @@ ba_track_id: 02a466052edda94895e8a536562977fe
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "实实在在做人、踏踏实实做事，少自大、少装逼。"
+sidebar-about-description: "实实在在做人、踏踏实实做事，少点自大和装逼，多点谦虚和真诚"
 sidebar-avatar: /img/avatar-hux.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
