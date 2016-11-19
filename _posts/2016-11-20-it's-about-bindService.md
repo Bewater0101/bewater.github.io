@@ -30,10 +30,9 @@ bindService接口定义在Context中，所以有Context的地方我们都可以�
 
 bindService时Service所在进程有3中状态，1.Service所在进程不在运行状态，2.Service所在进程为运行状态，但Service不在运行状态，3.Service为运行状态。上面的时序图是针对相对复杂的第一种情况画的。
 
-两个问题:  
-- a.为什么说bindService是一个异步调用？
-
-- b.可以在onServiceConnected中直接使用返回的IBinder吗？为什么？
+两个问题：   
+ >a.为什么说bindService是一个异步调用？  
+ b.可以在onServiceConnected中直接使用返回的IBinder吗？为什么？
       
 先分析第一个问题，为什么说bindService是一个异步调用？也就是说调用bindservice后会理解返回，而我们知道一般情况下，通过Binder跨进程调用时会将当前进程挂起，等待Server端Binder完成函数操作后再将当前发起函数调用的线程恢复并返回结果，而bindService这个地方有什么特殊的玄机吗？先公布实现的方式就是Binder的oneway方式，也就是在AIDL接口中若声明oneway关键字，则在发起IPC调用时不会阻塞在client端跟驱动的交互中，我们知道bindService接口本身的声明为同步的，注意如下最后一个参数为0，IBinder.FLAG_ONEWAY为1。
       
