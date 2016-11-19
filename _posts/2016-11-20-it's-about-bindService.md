@@ -30,7 +30,7 @@ bindService接口定义在Context中，所以有Context的地方我们都可以�
 
 bindService时Service所在进程有3中状态，1.Service所在进程不在运行状态，2.Service所在进程为运行状态，但Service不在运行状态，3.Service为运行状态。上面的时序图是针对相对复杂的第一种情况画的。
 
-两个问题： 
+两个问题:  
 - a.为什么说bindService是一个异步调用？
 
 - b.可以在onServiceConnected中直接使用返回的IBinder吗？为什么？
