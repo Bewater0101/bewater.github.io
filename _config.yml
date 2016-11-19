@@ -4,7 +4,7 @@ SEOTitle: Bewater的博客 | Bewater Blog
 header-img: img/home-bg.jpg
 email: ifreesky1988@gmail.com
 description: "Bewater Blog"
-keyword: "Bewater的博客 | Bewater Blog"
+keyword: "Bewater的博客 | Bewater Blog | Android"
 url: "http://beawaters.com"              # Bewater host, for absolute URL
 baseurl: ""         # for example, '/blog' if Bewater blog hosted on 'host/blog'
 
@@ -72,9 +72,8 @@ sidebar-about-description: "实实在在做人、踏踏实实做事，少点自�
 sidebar-avatar: /img/avatar-hux.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
-
 # Featured Tags
-featured-tags: false                     # whether or not using Feature-Tags
+featured-tags: true                     # whether or not using Feature-Tags
 featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
 
 
