@@ -23,12 +23,8 @@ tags:
 bindService接口定义在Context中，所以有Context的地方我们都可以取bindService，通常是在Activity的生命周期方法中（onCreate、onStart）去bindService，另外bindService通常用在需要跨进程的场景，如果是同进程建议使用startService即可，这里提下startService和bindService的特性，startService后需要stopService来结束Service的生命周期，而bindService对应的是unbindservice来接收Service的生命周期，当所有bindService的客户端都unbindService时，Service就会被系统kill掉（没有结合startService启动的话），bind远程Service时，如果远程Service挂掉，client端也能通过onServiceDisconnected感知到（通过Binder的linkToDeath实现）
 
 ### 三、bindService的实现原理：
-
 ![Public License](\img\in-post\it's-about-bindservice\bindService.png)
-
-以上时序图基本囊括bindService的主干流程，具体每一步我不多说了，结合源码去看没什么难度，其中onServiceConnected接口的回调是通过scheduleBindService后Server端Service publishService来完成的，另外需要注意的是这张图中涉及到3个进程的交互，发起调用的Client进程，提供Service服务的Server端进程，AMS所在的SystemServer进程。
-
-bindService时Service所在进程有3中状态，1.Service所在进程不在运行状态，2.Service所在进程为运行状态，但Service不在运行状态，3.Service为运行状态。上面的时序图是针对相对复杂的第一种情况画的。
+以上时序图基本囊括bindService的主干流程，具体每一步我不多说了，结合源码去看没什么难度，其中onServiceConnected接口的回调是AMS通过scheduleBindService构建Server端Binder，再通过publishService调用IServiceConnection connected来完成的，另外需要注意的是这张图中涉及到3个进程的交互，发起调用的Client进程，提供Service服务的Server端进程，AMS所在的SystemServer进程。同时bindService时Service所在进程有3种状态，1.Service所在进程不在运行状态，2.Service所在进程为运行状态，但Service不在运行状态，3.Service为运行状态。上面的时序图是针对相对复杂的第一种情况画的。
 
 两个问题：  
 a.为什么说bindService是一个异步调用？  
@@ -59,9 +55,11 @@ b.可以在onServiceConnected中直接使用返回的IBinder吗？为什么？
             }
         }  
 
-  mActivityThread实际为构建实际未ActivityThread中的mH对象，也就是处理UI线程相关操作的Handler，到此我们就明白不管你再Activity中的哪个生命周期方法发起bindService操作，也不管需要bind的Service是否已经运行或被被bind过（Service的onBinnd已经回调，Binder已经构建完成），onServiceConneced总是无法在你bind后的再下一行代码就能获取到。   
+  mActivityThread实际为ActivityThread中的mH对象，也就是处理UI线程相关操作的Handler，到此我们就明白不管你再Activity中的哪个生命周期方法发起bindService操作，也不管需要bind的Service是否已经运行或被被bind过（Service的onBinnd已经回调，Binder已经构建完成），onServiceConneced总是无法在你bind后的再下一行代码就能获取到。   
   
   到此第一个问题基本分析结束，其实第二个问题第一个已经解释一部分，就是onServiceConned在主线程完成回调，如果通过IBinder发起的调用耗时的话就会严重影响用户体验，所以，如果Binder Server端提供的接口是耗时操作，在对应的Client端请使用线程池方式发起调用，同时如果定义的某个aidl接口存在多线程操作的话，需要做好Binder Server端接口的同步操作！
 
 ---
 说明：这是本站的第一篇博客，所以肯定存在纰漏之处，后续针对每篇博客存在问题的 地方我也会不断更新，力求完美一点，大家如果有什么问题可以在下面留言（不是关于这篇博客的也可以），我看到后会尽快给大家回复。
+
+阅读原文：[http://beawaters.com/2016/11/20/its-about-bindService/](http://beawaters.com/2016/11/20/it%27s-about-bindService/)，欢迎转发，转发请注明作者:*bewater*, 以及原博客原文地址：[http://beawaters.com/2016/11/20/its-about-bindService/](http://beawaters.com/2016/11/20/it%27s-about-bindService/)
