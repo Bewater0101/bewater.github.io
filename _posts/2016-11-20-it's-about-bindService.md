@@ -24,7 +24,7 @@ bindService接口定义在Context中，所以有Context的地方我们都可以�
 
 ### 三、bindService的实现原理：
 
-![Public License](https://www.processon.com/chart_image/582ede27e4b05594f5090a7c.png)
+![Public License](\img\in-post\it's-about-bindservice\bindService.png)
 
 以上时序图基本囊括bindService的主干流程，具体每一步我不多说了，结合源码去看没什么难度，其中onServiceConnected接口的回调是通过scheduleBindService后Server端Service publishService来完成的，另外需要注意的是这张图中涉及到3个进程的交互，发起调用的Client进程，提供Service服务的Server端进程，AMS所在的SystemServer进程。
 
