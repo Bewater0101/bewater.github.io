@@ -1,10 +1,10 @@
 # Site settings
-title: Bewater Blog
-SEOTitle: Bewater的博客 | Bewater Blog
+title: Bewater blog
+SEOTitle: Bewater的博客 | Bewater blog
 header-img: img/home-bg.jpg
 email: ifreesky1988@gmail.com
-description: "Bewater Blog"
-keyword: "Bewater的博客 | Bewater Blog | Android"
+description: "Bewater blog"
+keyword: "Bewater的博客 | Bewater blog | Android"
 url: "http://beawaters.com"              # Bewater host, for absolute URL
 baseurl: ""         # for example, '/blog' if Bewater blog hosted on 'host/blog'
 

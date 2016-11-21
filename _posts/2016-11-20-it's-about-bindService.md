@@ -62,4 +62,4 @@ b.可以在onServiceConnected中直接使用返回的IBinder吗？为什么？
 ---
 说明：这是本站的第一篇博客，所以肯定存在纰漏之处，后续针对每篇博客存在问题的 地方我也会不断更新，力求完美一点，大家如果有什么问题可以在下面留言（不是关于这篇博客的也可以），我看到后会尽快给大家回复。
 
-阅读原文：[http://beawaters.com/2016/11/20/its-about-bindService/](http://beawaters.com/2016/11/20/it%27s-about-bindService/)，欢迎转发，转发请注明作者:*bewater*, 以及原博客原文地址：[http://beawaters.com/2016/11/20/its-about-bindService/](http://beawaters.com/2016/11/20/it%27s-about-bindService/)
+欢迎转发，转发请注明作者:*bewater*, 以及原博客原文地址：[http://beawaters.com/2016/11/20/its-about-bindService/](http://beawaters.com/2016/11/20/it%27s-about-bindService/)
